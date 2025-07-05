@@ -1,0 +1,21 @@
+name: test dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "イメージタグ"
+        required: true
+  workflow_call:
+    inputs:
+      image_tag:
+        description: "イメージタグ"
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "イメージタグ: ${{ inputs.image_tag }}"
